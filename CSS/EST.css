@@ -1,0 +1,42 @@
+body {
+    background: url(../IMAGENES/ee.jpg);
+    background-size: cover;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+.reloj{
+    font-family: 'Share Tech Mono', monospace;
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 7%;
+    transform: translate(-50%,-50%);
+    text-shadow: 0 0 20px rgba(10,175, 230,1), 0 0 20px rgba(10,175, 230,0) ;
+}
+.tiempo{
+    letter-spacing: 0.05em;
+    font-size: 30px;
+    padding: 5px 0;
+}
+.fecha{
+    letter-spacing: 0.1em;
+    font-size: 24px;
+}
+.top{
+    top: 0;
+    height: 100vh;
+    background-color: rgba(0,0,0,.8);
+    display: grid;
+    place-items: center;
+    transition: .4s;
+  }
+  .close{
+    top: 5em;
+    left: 70%;
+  }
+  .translate{
+    transform: translateY(-100%);
+  }
