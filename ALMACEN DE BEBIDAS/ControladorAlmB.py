@@ -3,12 +3,12 @@ import sqlite3
 
 class controladorBebi:
 
-    def __init__(self):
+    def init(self):
         pass
 #Preparamos la conexion a la BD para cuando sea necesario usarla
     def conexionBD(self):
         try:
-            conexion=sqlite3.connect("C:/Users/Jessy/Desktop/POO_BARRADAS_JESSICA_S181/POO_BARRADAS_JESSICA_S181/ALMACEN DE BEBIDAS/Almacen_bebidas.db")
+            conexion=sqlite3.connect("C:/Users/jessi/OneDrive/Documentos/GitHub/POO_BARRADAS_JESSICA_S181/ALMACEN DE BEBIDAS/Almacen_bebidas.db")
             print("Conexion exitosa")
             return conexion
 
@@ -27,7 +27,7 @@ class controladorBebi:
             cursor.execute(qrInsert,datos)
             conx.commit()
             conx.close()
-            messagebox.showinfo("Exito!!","Se guardo el material") 
+            messagebox.showinfo("Exito!!","Se guardo el producto") 
     def consultaBebida(self,id):
         #1. Preparar la conexión
         conx=self.conexionBD()
@@ -61,7 +61,7 @@ class controladorBebi:
                 EliminarBed=cursor.fetchall()
                 conx.commit()
                 conx.close()
-                messagebox.showinfo("ENHORABUENA","El usuario se ha eliminado correctamente")
+                messagebox.showinfo("ENHORABUENA","El producto se ha eliminado correctamente")
                 return EliminarBed
             except sqlite3.OperationalError:
                 messagebox.showerror("ERROR","Error en la consulta")
@@ -75,10 +75,10 @@ class controladorBebi:
             conx.close()
             return Consulta
         except sqlite3.OperationalError:
-            messagebox.showwarning("Advertencia","No se encontro ningún usuario")
-    def actualizarB(self,id,nomB,claB,MarB,PreB):
+            messagebox.showwarning("Advertencia","No se encontro ningún producto")
+    def actualizarB(self,nomB,claB,MarB,PreB):
         conx=self.conexionBD()
-        if (id=="" or nomB=="" or claB=="" or MarB=="" or PreB==""):
+        if (nomB=="" or claB=="" or MarB=="" or PreB==""):
             messagebox.showwarning("Advertencia","Ningun campo puede estar vacio")
             conx.close()
         else:
@@ -89,7 +89,7 @@ class controladorBebi:
                 Marca=MarB
                 Precio=PreB
                 sqlActu="UPDATE Bebidas SET Nombre=?, Clasifiacion=?, Marca=?, Precio=? WHERE ID=?"
-                cursor.execute(sqlActu,[nomb,clas,Marca,Precio,id])
+                cursor.execute(sqlActu,[nomb,clas,Marca,Precio])
                 BebActu=cursor.fetchall()
                 conx.commit()
                 conx.close()
