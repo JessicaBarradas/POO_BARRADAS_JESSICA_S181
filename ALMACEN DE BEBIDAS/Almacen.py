@@ -34,41 +34,41 @@ def ejecutaActualizar():
     else:
         messagebox.showerror("ERROR","No hay usuario registrado en la BD")
 def ejecutaCantidadMar():
-    cantidadMar = controlador.cantidadBebidaMar(varCanM.get())
+    cantidadMar = controlador.cantidadBebidaMarca(varCanM.get())
     
-    txtCanM.delete("1.0", "end")
-    for mar in cantidadMar:
-        cadena = "La cantidad total de bebidas de la marca es: "+ str(mar[0])
+    textCanM.delete("1.0", "end")
+    for can in cantidadMar:
+        cadena = "La cantidad total de bebidas de la marca es: "+ str(can[0])
     if(cantidadMar):
-        txtCanM.insert("0.0", cadena)
+        textCanM.insert("0.0", cadena)
     else:
         messagebox.showinfo("No encontrado", "Marca no registrada en la BD")
 
 def ejecutaCantidadClas():
     cantidadClasi = controlador.cantidadBebidaClas(varClasB.get())
     
-    txtClasB.delete("1.0", "end")
+    textClasB.delete("1.0", "end")
     for mar in cantidadClasi:
         cadena = "La cantidad total de bebidas por clasificación es: "+ str(mar[0])
     if(cantidadClasi):
-        txtClasB.insert("0.0", cadena)
+        textClasB.insert("0.0", cadena)
     else:
         messagebox.showinfo("No encontrado", "Marca no registrada en la BD")
 
 def EjecutaProm():
     prome = controlador.Prome()
     
-    txtPro.delete("1.0", "end")
+    textPro.delete("1.0", "end")
     cadena = str(prome)
     if(prome):
-        txtPro.insert("0.0", cadena)
+        textPro.insert("0.0", cadena)
     else:
         messagebox.showinfo("No encontrado", "Marca no registrada en la BD")
 
 
 ventana=Tk()
 ventana.title("Almacen de Bebidas")
-ventana.geometry("650x300")
+ventana.geometry("650x400")
 panel=ttk.Notebook(ventana)
 panel.pack(fill="both",expand="yes")
 
@@ -131,7 +131,7 @@ BebiID = tk.StringVar()
 BebiNom = tk.StringVar()
 BebiCla = tk.StringVar()
 BebiMar = tk.StringVar()
-BebiPre = tk.StringVar()
+BebiPre = tk.DoubleVar()
 Bedidaid = Label(pestana4, text = "ID de Bebida: ").pack()
 textid = Entry(pestana4, textvariable = BebiID).pack()
 BebidaNom = Label(pestana4, text = "Escribe el nuevo nombre de Bebida: ").pack()
@@ -142,24 +142,29 @@ BebidaMar = Label(pestana4, text = "Escribe la nueva Marca: ").pack()
 textMar = Entry(pestana4, textvariable = BebiMar).pack()
 BebidaPre = Label(pestana4, text = "Escribe el nuevo precio: ").pack()
 textPre = Entry(pestana4, textvariable = BebiPre).pack()
-btnActualizar=Button(pestana4,text="Actualizar").pack()
+btnActualizar=Button(pestana4,text="Actualizar",command=ejecutaActualizar).pack()
 #Pestaña 4: Operaciones
 titulo5 = Label(pestana5, text = "Operaciones Basicas", fg = "#84A7E5", font = ("Modern", 18)).pack()
 #Promedio Bebida
 varPro=tk.StringVar()
 lblPro=Label(pestana5,text="Precio promedio de Bebida: ").pack()
-txtPro=Entry(pestana5,textvariable=varPro).pack()
 btnCalcular=Button(pestana5,text="Calcular",command=EjecutaProm).pack()
+textPro=tk.Text(pestana5,height=2,width=52)
+textPro.pack()
 #Cantidad bebida de una Marca
 varCanM=tk.StringVar()
 lblCanM=Label(pestana5,text="Cantidad de bebida por Marca: ").pack()
 txtCanM=Entry(pestana5,textvariable=varCanM).pack()
 btnMostrar=Button(pestana5,text="Mostrar",command=ejecutaCantidadMar).pack()
+textCanM=tk.Text(pestana5,height=2,width=52)
+textCanM.pack()
 #Cantidad por clasificacion
 varClasB=tk.StringVar()
 lblClasB=Label(pestana5,text="Cantidad de bebida por Clasificacion: ").pack()
 txtClasB=Entry(pestana5,textvariable=varClasB).pack()
 btnMostrar1=Button(pestana5,text="Mostrar",command=ejecutaCantidadClas).pack()
+textClasB=tk.Text(pestana5,height=2,width=52)
+textClasB.pack()
 
 
 panel.add(pestana1,text="ALTA DE BEBIDA")
