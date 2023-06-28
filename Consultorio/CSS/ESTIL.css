@@ -45,7 +45,7 @@ article img:first-child{
 }
 article img:last-child{
     position:absolute;
-    width: 200px;
+    width: 250px;
     bottom: 0;
     left: 0;
     right: 0;
