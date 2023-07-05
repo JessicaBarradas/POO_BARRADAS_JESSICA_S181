@@ -8,11 +8,16 @@
 <body>
     <h1>Album a Borrar: </h1>
     <br><br>
-    <form action="#" method="POST">
-        <input type="text" name="txtTitulo" value="{{album.1}}">
-        <input type="text" name="txtArtista" value="{{album.2}}">
-        <input type="number" name="txtAño" value="{{album.3}}">
+    <h2>Seguro que desea eliminar el album?</h2>
+    <br><br>
+    <form action="/Borrar/{{album1.0}}" method="POST">
+        <input type="text" name="txtTitulo" value="{{album1.1}}" readonly>
+        <input type="text" name="txtArtista" value="{{album1.2}}" readonly>
+        <input type="number" name="txtAño" value="{{album1.3}}" readonly>
         <button type="submit">Borrar</button>
+    </form>
+    <form action="/">
+    <button type="submit">Cancelar</button>
     </form>
 </body>
 </html>
