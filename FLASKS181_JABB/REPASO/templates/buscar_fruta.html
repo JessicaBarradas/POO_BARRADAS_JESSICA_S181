@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Fruta</title>
+</head>
+<body>
+    <h1>Consultar fruta por nombre</h1>
+    <br>
+    <form action="/consultar">
+        <button>Regresar</button>
+    </form>
+    <br><br>
+    <form action="ConsultaNombre" method="POST">
+        <input type="text" name="txtBuscarFruta" placeholder="Buscar Fruta" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <br><br>
+    <table>
+        <thead>
+            <tr>
+                <td>Id: </td>
+                <td>Fruta: </td>
+                <td>Temporada: </td>
+                <td>Precio: </td>
+                <td>Stock: </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for frut in listFruta %}
+            <tr>
+                <td>{{frut.0}}</td>
+                <td>{{frut.1}}</td>
+                <td>{{frut.2}}</td>
+                <td>{{frut.3}}</td>
+                <td>{{frut.4}}</td>
+                <td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+        </thead>
+</body>
+</html>

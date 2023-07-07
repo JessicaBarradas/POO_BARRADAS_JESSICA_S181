@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Fruta</title>
+</head>
+<body>
+    <h1>Fruta a Borrar: </h1>
+    <br><br>
+    <h2>Seguro que desea eliminar la Fruta?</h2>
+    <br><br>
+    <form action="/Borrar/{{frut1.0}}" method="POST">
+        <input type="text" name="txtFruta" value="{{frut1.1}}" readonly>
+        <input type="text" name="txtTemporada" value="{{frut1.2}}" readonly>
+        <input type="decimal" name="txtPrecio" value="{{frut1.3}}" readonly>
+        <input type="number" name="txtStock" value="{{frut1.4}}" readonly>
+        <button type="submit">Borrar</button>
+    </form>
+    <form action="/">
+    <button type="submit">Cancelar</button>
+    </form>
+</body>
+</html>
