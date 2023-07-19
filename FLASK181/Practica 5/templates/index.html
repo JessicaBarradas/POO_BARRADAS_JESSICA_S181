@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Albums</title>
-</head>
-<body>
+{% extends 'plantilla.html' %}
+{%block body%}
+
     <br><br><h1>Gestion de Albums</h1><br>
     {%with mensajes=get_flashed_messages()%} 
         {% if  mensajes%}
@@ -46,5 +42,5 @@
             {% endfor %}        
         </tbody>
     </table>
-</body>
-</html>
+
+    {%endblock%}
