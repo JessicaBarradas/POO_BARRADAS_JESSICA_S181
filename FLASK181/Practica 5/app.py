@@ -27,14 +27,16 @@ def guardar():
         Vtitulo=request.form['txtTitulo']
         Vartista=request.form['txtArtista']
         Vaño=request.form['txtAño']
-        print(Vtitulo,Vartista,Vaño)
-        #Conectar y ejecutar el insert
-        CS=mysql.connection.cursor()
-        CS.execute('insert into tbalbums(Titulo,Artista,Año) values(%s,%s,%s)',(Vtitulo,Vartista,Vaño))
-        mysql.connection.commit()
-    flash('El album fue agregado correctamente')
-    return redirect(url_for('index'))
-
+        if Vtitulo == "" or Vartista== "" or Vaño == "":
+            flash('No puedes enviar campos vacios')
+            return redirect(url_for('index'))
+        else:
+            #Conectar y ejecutar el insert
+            CS = mysql.connection.cursor()
+            CS.execute('insert into albums(titulo,artista,anio) values (%s,%s,%s)',(Vtitulo,Vartista,Vaño))
+            mysql.connection.commit()
+            flash('El album fue agregado correctamente')
+            return redirect(url_for('index'))
 @app.route('/editar/<id>')
 def editar(id):
     cursorId=mysql.connection.cursor()
