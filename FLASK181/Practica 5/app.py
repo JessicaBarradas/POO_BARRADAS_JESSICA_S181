@@ -33,7 +33,7 @@ def guardar():
         else:
             #Conectar y ejecutar el insert
             CS = mysql.connection.cursor()
-            CS.execute('insert into albums(titulo,artista,anio) values (%s,%s,%s)',(Vtitulo,Vartista,Vaño))
+            CS.execute('insert into tbalbums(Titulo,Artista,Año) values (%s,%s,%s)',(Vtitulo,Vartista,Vaño))
             mysql.connection.commit()
             flash('El album fue agregado correctamente')
             return redirect(url_for('index'))
@@ -42,7 +42,7 @@ def editar(id):
     cursorId=mysql.connection.cursor()
     cursorId.execute('Select * from tbalbums where id= %s',(id))
     consulId=cursorId.fetchone()
-    return render_template('editarAlbum.html', album=consulId)
+    return render_template('editarAlbum.html', alb=consulId)
 @app.route('/actualizar/<id>',methods=['POST'])
 def actualizar(id):
     if request.method=='POST':
