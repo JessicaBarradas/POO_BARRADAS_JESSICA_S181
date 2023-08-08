@@ -6,6 +6,7 @@
 body {
     background: url(../IMAGENES/ee.jpg);
     background-size: cover;
+
 }
 p{
     margin: 0;
@@ -29,13 +30,17 @@ p{
 .fecha{
     letter-spacing: 0.1em;
     font-size: 24px;
+
 }
-article{
+.article{
     position: relative;
-    width: 250px;
+    width: 300px;
+    height: 200;
     transition: all -3s ease;
+    background-size: cover;
+    margin: 10px;
 }
-article img:first-child{
+.article img:first-child{
     box-shadow: 0 60px 60px
 -60px rgba(0,30, 255,0.5);
     border-radius: 4px;
@@ -43,8 +48,8 @@ article img:first-child{
     width: 100%;
     position: relative;
 }
-article img:last-child{
-    position:absolute;
+.article img:last-child{
+    position:relative;
     width: 250px;
     bottom: 0;
     left: 0;
@@ -54,14 +59,14 @@ article img:last-child{
     transition: .3s ease;
     opacity: 0;
 }
-article:hover{
+.article:hover{
     transform: 
     perspective(250px)
     rotateX(10deg)
     translateY(-5%)
     translateZ(0);
 }
-article::before{
+.article::before{
     content: '';
     position: absolute;
     width: 100%;
@@ -77,10 +82,10 @@ article::before{
     opacity: 0;
     transition: all .3s ease;
 }
-article:hover::before{
+.article:hover::before{
     opacity: 1;
 }
-article:hover img:last-child{
+.article:hover img:last-child{
     opacity: 1;
     transform: translateY(10%);
 }
