@@ -1,0 +1,61 @@
+#una clase para representar un conjunto disjunto
+class DisjointSet:
+    parent={}
+    #realiza la operacion MakeSet
+    def makeSet(self,n):
+    #crear 'n' conjuhntos disjuntos (uno para cada vertice)
+        for i in range(n):
+            self.parent[i]=i
+#encuentra la raiz del conjunto al que pertenece el elemento 'k'
+    def find(self,k):
+    #si 'k' es root
+        if self.parent[k]==k:
+            return k
+#recurre para el padre hasta que encontremos la raiz
+        return self.find(self.parent[k])
+#realizar una union de dos subconjuntos
+    def union(self,a,b):
+        #encontrar la raiz de los conjuntos a los que pertenecen 'x' e 'y'
+        x=self.find(a)
+        y=self.find(b)
+        self.parent[x]=y
+#funcion # para construir MST usando el algoritmo de Kruskal
+def runKruskalAlgorithm(edges,n):
+    #almacena los bordes presentes en MST
+    MST=[]
+    #incializa la clase 'DisjoinSet'
+    #crea un conjunto singelton para cada elemento del universo
+    ds=DisjointSet()
+    ds.makeSet(n)
+    index=0
+    #ordena los bordes aumentando el peso
+    edges.sort(key=lambda x:x[2])
+    #MST contiene exactamente aristas 'V-1'
+    while len (MST) !=n-1:
+        #considerar el borde siguiente con peso minimo del graph
+        (src, dest, weight)=edges[index]
+        index=index + 1
+    #encontrar la raiz de los conjuntos a los que se unen de dos extremos
+    # vertices de la siguiente arista pertenecen
+        x=ds.find(src)
+        y=ds.find(dest)
+# si ambos extremos tiene diferentes padres pertenecen a diferentes componentes conectados y se puede incluir en MST
+        if x!=y:
+            MST.append((src,dest,weight))
+            ds.union(x,y)
+    return MST 
+if __name__=='__main__':
+    #(u,v,w) el triplete representa un borde no dirigido desde vertice 'u' vertices 'v' con peso 'w'
+    a=0
+    b=1
+    c=2
+    d=3
+    e=4
+    f=5
+    g=6
+    edges=[(a,c,2),(b,f,3),(c,e,3),(d,g,3),(e,c,4),(f,g,5)]
+    #el numero total de nodos en el graph(etiquetados de 0 a 6)
+    n=7
+    #graph de construccion
+    e=runKruskalAlgorithm(edges,n)
+    print(e)
